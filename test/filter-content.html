@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>conpinion-element-filter test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../lib/webcomponentsjs/webcomponents.js"></script>
+  <script src="../lib/web-component-tester/browser.js"></script>
+  <script src="../lib/test-fixture/test-fixture-mocha.js"></script>
+  <script src="../lib/coffee-script/extras/coffee-script.js"></script>
+  <link rel="import" href="../lib/test-fixture/test-fixture.html">
+  <link rel="import" href="../build/conpinion-element-filter.html">
+</head>
+
+<body>
+
+  <test-fixture id="hidden-element">
+    <template>
+      <conpinion-element-filter filter>
+        <div>Content hidden</div>
+      </conpinion-element-filter>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="visible-element">
+    <template>
+      <conpinion-element-filter>
+        <div>Content visible</div>
+      </conpinion-element-filter>
+    </template>
+  </test-fixture>
+
+  <script type="text/coffeescript">
+
+    element = null
+
+    describe 'if the attribute filter is set', ->
+
+      beforeEach -> element = fixture 'hidden-element'
+
+      it 'should hide the element content', ->
+        style = window.getComputedStyle(element)
+        expect(style.display).to.equal 'none'
+
+    describe 'if the attribute filter is not set', ->
+
+      beforeEach -> element = fixture 'visible-element'
+
+      it 'should show the element content', ->
+        style = window.getComputedStyle(element)
+        expect(style.display).to.equal 'inline'
+
+  </script>
+
+</body>
+
+</html>

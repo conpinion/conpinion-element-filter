@@ -1,0 +1,12 @@
+# ide configuration
+*.iml
+.idea
+atlassian-ide-plugin.xml
+
+# java script libraries
+lib
+node_modules
+
+# tmp files and build artifacts
+tmp
+build

@@ -1,0 +1,49 @@
+
+<!--
+Copyright (c) 2015 TELCAT MULTICOM GmbH. All rights reserved.
+Copyright (c) 2016 conpinion GbR. All rights reserved.
+
+Element: conpinion-element-filter
+Version: 0.1.3
+Description: An element filter comonent
+-->
+
+
+<link href="../polymer/polymer.html" rel="import">
+
+<dom-module id="conpinion-element-filter">
+
+  <template>
+
+<style>:host.filter {
+  display: none;
+}
+</style>
+
+    <content></content>
+  </template>
+
+<script type="text/javascript">(function() {
+  Polymer({
+    is: 'conpinion-element-filter',
+    properties: {
+      filter: {
+        type: Boolean,
+        value: false,
+        observer: 'filterChanged'
+      }
+    },
+    filterChanged: function() {
+      console.log(this.filter);
+      if (this.filter) {
+        return this.classList.add('filter');
+      } else {
+        return this.classList.remove('filter');
+      }
+    }
+  });
+
+}).call(this);
+</script>
+
+</dom-module>
